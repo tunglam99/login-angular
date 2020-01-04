@@ -1,24 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from './service/authentication.service';
+import {UserToken} from './model/user-token';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  isLogin: boolean;
-  title = 'login-angular';
+export class AppComponent {
+  currentUser: UserToken;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  ngOnInit(): void {
-    const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
-      this.isLogin = true;
-    } else {
-      this.isLogin = false;
-    }
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }

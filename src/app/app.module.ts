@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RegisterComponent} from './user/register/register.component';
+import { LoginComponent } from './user/login/login.component';
+import { HomeComponent } from './user/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,7 @@ import {RegisterComponent} from './user/register/register.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
